@@ -3,6 +3,7 @@ var PythonShell = require('python-shell'),
 module.exports = function(app){
     app.post("/start",function(req,res){
         console.log("entered");
+	console.log(req.body);
         var options = {
             args:[
                 req.body.ip,
@@ -15,8 +16,5 @@ module.exports = function(app){
             console.log("done");
             res.json({});
         })
-    })
-    app.get("/stop",function(req,res){
-        res.json({});
     })
 }

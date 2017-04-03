@@ -2,6 +2,8 @@
 
 import sys
 import time
+import logging
+logging.getLogger("scapy.runtime").setLevel(logging.ERROR)
 from scapy.all import IP, TCP, send
 from random import randint
 
@@ -21,5 +23,4 @@ while 1:
     p = send(IP(src=srcIp, dst=dstIp)/TCP(dport=dstPrt))
     if time.time() > ttl:
         break
-
 
