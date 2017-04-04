@@ -12,6 +12,9 @@ module.exports = function(app){
             ]
         }
         var pyshell = new PythonShell('./IPSpoofTest.py',options);
+	pyshell.on('message',function(message){
+		console.log(message);
+	})
         pyshell.on('close',function(message){
             console.log("done");
             res.json({});

